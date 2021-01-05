@@ -63,51 +63,47 @@ namespace SteamCMD_Hub
             Console.WriteLine("Choice:");
 
             string choice = Console.ReadLine();
-            if (choice=="1") {
-               Process steamcmd = new Process();
-               steamcmd.StartInfo.FileName = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.exe";
-               steamcmd.StartInfo.Arguments = "+runscript steamcmd.script";
-               steamcmd.Start();
-               return;
-            }
-            else if (choice=="2") {
-                Process steamcmd = new Process();
-                steamcmd.StartInfo.FileName = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.exe";
-                //steamcmd.StartInfo.Arguments = "+runscript steamcmd.script";
-                steamcmd.Start();
-                return;
-            }
-            else if (choice == "3")
+            switch (choice)
             {
-                Console.WriteLine("What's your username?");
-                string name = Console.ReadLine();
-                Console.WriteLine("What's your password");
-                string pass = Console.ReadLine();
-                Console.WriteLine("What's your steam guard pin?");
-                string pin = Console.ReadLine();
-                Process steamcmd = new Process();
-                steamcmd.StartInfo.FileName = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.exe";
-                steamcmd.StartInfo.Arguments = "+login " + name + " " + pass + " " +  pin;
-                steamcmd.Start();
+                 case "1":
+                    Process steamcmd = new Process();
+                    steamcmd.StartInfo.FileName = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.exe";
+                    steamcmd.StartInfo.Arguments = "+runscript steamcmd.script";
+                    steamcmd.Start();
                 return;
-            }
-            else if (choice=="4")
-            {
-                Process steamcmd = new Process();
-                steamcmd.StartInfo.FileName = "notepad.exe";
-                steamcmd.StartInfo.Arguments = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.script";
-                steamcmd.Start();
+                case "2":
+                      Process steamcmd2 = new Process();
+                      steamcmd2.StartInfo.FileName = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.exe";
+                      //steamcmd.StartInfo.Arguments = "+runscript steamcmd.script";
+                      steamcmd2.Start();
                 return;
-            }
-            else if(choice=="5")
-            {
+                case "3":
+                      Console.WriteLine("What's your username?");
+                      string name = Console.ReadLine();
+                      Console.WriteLine("What's your password");
+                      string pass = Console.ReadLine();
+                      Console.WriteLine("What's your steam guard pin?");
+                      string pin = Console.ReadLine();
+                      Process steamcmd3 = new Process();
+                      steamcmd3.StartInfo.FileName = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.exe";
+                      steamcmd3.StartInfo.Arguments = "+login " + name + " " + pass + " " +  pin;
+                      steamcmd3.Start();
                 return;
-            }
-            else
-            {
-                Console.WriteLine("That's not an option! >//<");
-                Console.ReadKey();
+                case "4":
+                      Process steamcmd4 = new Process();
+                      steamcmd4.StartInfo.FileName = "notepad.exe";
+                      steamcmd4.StartInfo.Arguments = Environment.CurrentDirectory + @"\SteamCMD\steamcmd.script";
+                      steamcmd4.Start();
                 return;
+                case "5":
+
+                return;
+
+                default: 
+                      Console.WriteLine("That's not an option! >//<");
+                      Console.ReadKey();
+                return;
+
             }
         }
     }
