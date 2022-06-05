@@ -5,7 +5,7 @@ using System.Net;
 using System.IO.Compression;
 using System.ComponentModel;
 
-namespace SteamCMD_Hub
+namespace SteamCMDHub
 {
     class Program
     {
@@ -31,7 +31,7 @@ namespace SteamCMD_Hub
                     }
                     catch (WebException e)
                     {
-                        throw;
+                        throw e;
                     }
 
                     Console.WriteLine("Downloaded!");
