@@ -31,7 +31,7 @@ namespace SteamCMD_Hub
                     }
                     catch (WebException e)
                     {
-                        throw;
+                        throw e;
                     }
 
                     Console.WriteLine("Downloaded!");
