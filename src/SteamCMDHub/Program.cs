@@ -22,7 +22,7 @@ namespace SteamCMDHub
                 Console.WriteLine("Would you like do download it now?");
                 Console.WriteLine("(Y)es, (N)o");
                 string input = Console.ReadLine();
-                if (input == "y" ||input == "Y")
+                if (input.ToLower() == "y")
                 {
                     try
                     {

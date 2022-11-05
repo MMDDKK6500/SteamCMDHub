@@ -5,6 +5,7 @@ using System.Threading;
 ///////////////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Build");
+var runtime = Argument("runtime", "win-x64");
 var configuration = Argument("configuration", "Release");
 var version = "1.1.1";
 
@@ -27,7 +28,7 @@ Task("Clean")
 
 Task("Compile")
     .Does(() => {
-        DotNetCoreBuild(sln.FullPath, new DotNetCoreBuildSettings
+        DotNetBuild(sln.FullPath, new DotNetBuildSettings
         {
             Configuration = configuration,
         });
@@ -35,15 +36,28 @@ Task("Compile")
 
 Task("Pack")
     .Does(() => {
-        DotNetCorePack(project.FullPath, new DotNetCorePackSettings {
+        DotNetPack(project.FullPath, new DotNetPackSettings {
             OutputDirectory = artifactsDir,
             Configuration = configuration,
-            Verbosity = DotNetCoreVerbosity.Minimal
+            Verbosity = DotNetVerbosity.Minimal
         });
     });
 
 Task("Build")
     .IsDependentOn("Clean")
     .IsDependentOn("Compile");
+
+
+Task("Publish")
+    .Does(() => {
+        DotNetPublish(sln.FullPath, new DotNetPublishSettings
+        {
+            Configuration = configuration,
+            SelfContained = false,
+            Runtime = runtime,
+            PublishSingleFile = true,
+        });
+});
+
 
 RunTarget(target);
