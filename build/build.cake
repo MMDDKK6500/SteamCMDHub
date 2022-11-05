@@ -23,8 +23,6 @@ Task("Clean")
     .Does(() => {
         EnsureDirectoryExists(artifactsDir);
         CleanDirectory(artifactsDir);
-
-        CleanDirectory($"./src/SteamCMDHub/bin/{configuration}");
 });
 
 Task("Compile")
